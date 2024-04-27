@@ -9,16 +9,53 @@ How server-side and client-side rendering differ
 Before we jump further into this article, it is necessary to understand what SSR and CSR are. **Server-side rendering** allows the content of a web page to be generated on the server rather than in the browser. In **client-side rendering**, the rendering of a web page is performed in the client's browser. Unlike SSR, where the server generates the full page's HTML for each request, in CSR, the server sends a minimal HTML document with a JavaScript bundle to the client. The browser executes the JavaScript, which typically fetches data from the server and generates the HTML content dynamically on the client.
 
 Here are some of the strengths and drawbacks of both methods:
-|                     | SSR                                                                                                                     | CSR                                                                                                                                         |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Rendering location | The HTML is fully rendered on the server, and a complete page is sent to the client.                                   | The browser receives minimal HTML, and JavaScript renders the content on the client-side.                                                    |
-| Initial load time   | Generally offers faster initial page load times because the browser can display the page as soon as it receives the HTML. | May have slower initial load times since the browser needs to load, parse, and execute JavaScript before rendering the content.         |
-| SEO Optimization   | More SEO-friendly as search engines can crawl the fully rendered HTML content.                                          | Less SEO-friendly out of the box since search engines might struggle to index content that is rendered asynchronously via JavaScript.     |
-| Resource utilization | Increases the load on the server since it has to render content for each request.                                        | Offloads rendering to the client, reducing server load but increasing the client's processing requirements.                                |
-| User experience    | Can provide a better initial user experience with faster-perceived load times.                                          | Might enhance the user experience in dynamic applications with smooth transitions and interactions after the initial load.              |
-| Development Complexity | Can be more complex to implement, especially for highly dynamic sites, due to the need for server infrastructure and handling of the initial rendering. | Simplifies initial development since the rendering is handled in the browser, but managing state and interactivity can become complex. |
-| Caching            | Easier to cache at the server level or through a CDN as the content is static and pre-rendered.                         | Caching strategies can be more complex due to dynamic content rendering, often requiring sophisticated service worker setups.             |
-| Data fetching      | The server pre-fetches data before rendering the page, which can improve performance for the initial load.             | Data is fetched on the client-side, which can delay content rendering until after the data is retrieved.                                  |
+<table>
+  <tr>
+    <th></th>
+    <th>SSR</th>
+    <th>CSR</th>
+  </tr>
+  <tr>
+    <td>Rendering location</td>
+    <td>The HTML is fully rendered on the server, and a complete page is sent to the client.</td>
+    <td>The browser receives minimal HTML, and JavaScript renders the content on the client-side.</td>
+  </tr>
+  <tr>
+    <td>Initial load time</td>
+    <td>Generally offers faster initial page load times because the browser can display the page as soon as it receives the HTML.</td>
+    <td>May have slower initial load times since the browser needs to load, parse, and execute JavaScript before rendering the content.</td>
+  </tr>
+  <tr>
+    <td>SEO Optimization</td>
+    <td>More SEO-friendly as search engines can crawl the fully rendered HTML content.</td>
+    <td>Less SEO-friendly out of the box since search engines might struggle to index content that is rendered asynchronously via JavaScript.</td>
+  </tr>
+  <tr>
+    <td>Resource utilization</td>
+    <td>Increases the load on the server since it has to render content for each request.</td>
+    <td>Offloads rendering to the client, reducing server load but increasing the client's processing requirements.</td>
+  </tr>
+  <tr>
+    <td>User experience</td>
+    <td>Can provide a better initial user experience with faster-perceived load times.</td>
+    <td>Might enhance the user experience in dynamic applications with smooth transitions and interactions after the initial load.</td>
+  </tr>
+  <tr>
+    <td>Development Complexity</td>
+    <td>Can be more complex to implement, especially for highly dynamic sites, due to the need for server infrastructure and handling of the initial rendering.</td>
+    <td>Simplifies initial development since the rendering is handled in the browser, but managing state and interactivity can become complex.</td>
+  </tr>
+  <tr>
+    <td>Caching</td>
+    <td>Easier to cache at the server level or through a CDN as the content is static and pre-rendered.</td>
+    <td>Caching strategies can be more complex due to dynamic content rendering, often requiring sophisticated service worker setups.</td>
+  </tr>
+  <tr>
+    <td>Data fetching</td>
+    <td>The server pre-fetches data before rendering the page, which can improve performance for the initial load.</td>
+    <td>Data is fetched on the client-side, which can delay content rendering until after the data is retrieved.</td>
+  </tr>
+</table>
 
 
 Understanding auth patterns for CSR and SSR in Next.js
